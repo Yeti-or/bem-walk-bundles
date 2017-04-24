@@ -29,7 +29,10 @@ class BemFile {
 module.exports = class BemBundle extends BemFile {
     constructor(bemFile, entry) {
         super(bemFile.cell, bemFile.path);
+
         this.name = path.basename(entry).split('.')[0];
-        this.entryTech = path.basename(entry).split('.')[1];
+        this.entryPath = entry;
+
+        this.levels = [];
     }
 }
