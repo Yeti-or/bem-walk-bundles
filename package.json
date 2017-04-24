@@ -1,0 +1,25 @@
+{
+  "name": "bem-walk-bundles",
+  "version": "0.0.0",
+  "description": "fullfill bundles while bem-walking",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Yeti-or/bem-walk-bundles.git"
+  },
+  "keywords": [
+    "bem",
+    "walk",
+    "bundles",
+    "levels"
+  ],
+  "author": "Vasiliy Loginevskiy <yeti.or@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Yeti-or/bem-walk-bundles/issues"
+  },
+  "homepage": "https://github.com/Yeti-or/bem-walk-bundles#readme"
+}
