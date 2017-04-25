@@ -11,8 +11,7 @@ class BemLevel extends BemFile {
 
     static collectLevelsForBundle(baseLevels, entityLevels, bundle) {
 
-        var sortByLayer = (levelA, levelB) =>
-            baseLevels.indexOf(levelA.layer) - baseLevels.indexOf(levelB.layer);
+        var sortByLayer = (levelA, levelB) => baseLevels.indexOf(levelA.layer) - baseLevels.indexOf(levelB.layer);
         var pushLevel = level => bundle.levels.push(level.path);
 
         entityLevels['blocks'] &&

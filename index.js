@@ -72,28 +72,45 @@ module.exports = function(opts, callback) {
         }
     },
     function flush(next) {
-        if (target.entity) {
-            var entityBundles = this.bundles[target.entity];
-            var entityLevels = this.levels[target.entity];
-
-            var bundlesFilledWithLevels = Object.keys(entityBundles)
-                .filter(bundleName => !Boolean(target.bundleName) || bundleName === target.bundleName)
-                .reduce((bundles, bundleName) => {
-                    entityBundles[bundleName]
-                        .forEach(bundle => {
-                            bundles.push(BemLevel.collectLevelsForBundle(levels, entityLevels, bundle));
-                        })
-
-                    return bundles;
-                }, [])
-
-            callback && callback(bundlesFilledWithLevels);
-            next();
-        } else {
-            callback && callback();
-            next();
-        }
+        callback && callback(fillBundlesWithLevelsForTarget(
+            this.bundles,
+            this.levels,
+            levels,
+            target
+        ));
+        next();
     });
 };
 
 module.exports.BemBundle = BemBundle;
+
+function fillBundlesWithLevelsForTarget(bundles, levels, baseLevels, target) {
+    return (target.entity ? [target.entity] : Object.keys(bundles))
+        .reduce((filledBundles, entity) => {
+            var entityBundles = bundles[entity];
+            var entityLevels = levels[entity];
+            return filledBundles.concat(fillBundlesWithLevels(
+                entityBundles,
+                entityLevels,
+                baseLevels,
+                target.bundleName
+            ));
+        }, []);
+}
+
+function fillBundlesWithLevels(entityBundles, entityLevels, baseLevels, targetBundleName) {
+    return Object.keys(entityBundles)
+        .filter(bundleName => !Boolean(targetBundleName) || bundleName === targetBundleName)
+        .reduce((bundles, bundleName) => {
+            entityBundles[bundleName]
+                .forEach(bundle => {
+                    bundles.push(BemLevel.collectLevelsForBundle(
+                        baseLevels,
+                        entityLevels,
+                        bundle
+                    ));
+                })
+
+            return bundles;
+        }, []);
+}
