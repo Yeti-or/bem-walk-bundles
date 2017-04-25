@@ -49,7 +49,7 @@ module.exports = function(opts, callback) {
             this.levels[entityId] ||  (this.levels[entityId] = { blocks: [] });
 
             levelsAndBundles.bundles.map(bundlePath => {
-                var bundle = new BemBundle(file, bundlePath, levels);
+                var bundle = new BemBundle(file, bundlePath, levels, target.platform);
                 this.bundles[entityId][bundle.name] =
                     (this.bundles[entityId][bundle.name] || []).concat(bundle);
                 this.push(bundle);
