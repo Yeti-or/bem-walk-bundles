@@ -12,6 +12,10 @@ module.exports = class BemBundle extends BemFile {
         this.entryPath = entry;
         this.levels = [].concat(levels);
         this.platform = platform;
+        this.targetDir = path.resolve(path.join(this.platform + '.' + this.tech,
+            this.entity.id,
+            this.name
+        ));
 
         this._isBundle = true;
     }
