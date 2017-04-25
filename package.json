@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/Yeti-or/bem-walk-bundles#readme",
   "dependencies": {
-    "@bem/walk": "^1.0.0-2"
+    "minimatch": "^3.0.3",
+    "through2": "^2.0.3"
   }
 }
