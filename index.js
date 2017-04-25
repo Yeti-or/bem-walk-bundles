@@ -57,12 +57,13 @@ module.exports = function(opts, callback) {
             });
 
             levelsAndBundles.levels.forEach(level => {
-                this.levels[entityId].blocks.push(new BemLevel(file, level));
+                this.levels[entityId]['blocks'].push(new BemLevel(file, level));
             });
 
             levelsAndBundles.bundleLevels.forEach(level => {
                 var name = path.basename(level).split('.')[0];
-                this.levels[entityId][name] = new BemLevel(file, level);
+                this.levels[entityId][name] || (this.levels[entityId][name] = []);
+                this.levels[entityId][name].push(new BemLevel(file, level));
             });
 
             next();
