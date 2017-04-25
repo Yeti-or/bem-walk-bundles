@@ -85,7 +85,7 @@ module.exports = function(opts, callback) {
 module.exports.BemBundle = BemBundle;
 
 function fillBundlesWithLevelsForTarget(bundles, levels, baseLevels, target) {
-    return (target.entity ? [target.entity] : Object.keys(bundles))
+    return (target.entity ? [target.entity] : bundles ? Object.keys(bundles) : [])
         .reduce((filledBundles, entity) => {
             var entityBundles = bundles[entity];
             var entityLevels = levels[entity];
