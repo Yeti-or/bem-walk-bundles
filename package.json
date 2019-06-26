@@ -1,6 +1,6 @@
 {
   "name": "bem-walk-bundles",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "fullfill bundles while bem-walking",
   "main": "index.js",
   "scripts": {
@@ -15,6 +15,11 @@
     "walk",
     "bundles",
     "levels"
+  ],
+  "files": [
+    "bemfile.js",
+    "bundle.js",
+    "levels.js"
   ],
   "author": "Vasiliy Loginevskiy <yeti.or@gmail.com>",
   "license": "MIT",
